@@ -3,6 +3,7 @@ import './App.scss';
 import ColorBox from './components/ColorBox';
 import TodoList from './components/TodoList';
 import React, { useState } from "react";
+import TodoForm from './components/TodoForm';
 
 function App() {
   // -------------ColorBox-------------------------
@@ -28,10 +29,22 @@ function App() {
     setTodoList(newTodoList);
   }
 
+  function onTodoFormSubmit(formValues) {
+    //add value to TodoList
+    const itemAdd = {
+      id: todoList.length + 1,
+      ...formValues //lay tat ca key trong form values
+    }
+    const newTodo = [...todoList];
+    newTodo.push(itemAdd);
+    setTodoList(newTodo);
+  }
+  
+
   return (
     <div className="app">
       <h1>TodoList</h1>
-
+      <TodoForm onSubmit={onTodoFormSubmit}/>
       <TodoList todos={todoList} onTodoClick={handleTodoClick}/>
     </div>
   )
