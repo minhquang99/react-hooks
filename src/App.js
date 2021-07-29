@@ -7,6 +7,7 @@ import TodoForm from './components/TodoForm';
 import PostList from './components/PostList';
 import Pagination from './components/Pagination';
 import queryString from 'query-string';
+import PostFiler from './components/PostFilter';
 
 function App() {
   // -------------ColorBox-------------------------
@@ -68,6 +69,16 @@ function App() {
       _page: newPage
     });
   }
+
+  //---------------------PostFilter Search-------------
+  function handlePostFilters (newFilters) {
+    console.log('New filters: ', newFilters);
+    setFilters({
+      ...filters,
+      _page: 1,
+      title_like: newFilters.searchTerm
+    });
+  }
   
   useEffect(() => {
     async function fetchData() {
@@ -90,9 +101,14 @@ function App() {
 
   return (
     <div className="app">
-      <h1>TodoList</h1>
+      <h1>LEARCH REACT HOOKS</h1>
+      <h3>1. TodoForm</h3>
+      <h5>Type a name and Enter to Add</h5>
       <TodoForm onSubmit={onTodoFormSubmit}/>
       <TodoList todos={todoList} onTodoClick={handleTodoClick}/>
+      <h3>2. PostList from API</h3>
+      <h5>Searh a Post:</h5>
+      <PostFiler onSubmit={handlePostFilters}/>
       <PostList posts={postList}/>
       <Pagination pagination={pagination} onPageChange={handlePageChange}/>
     </div>
