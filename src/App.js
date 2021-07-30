@@ -8,6 +8,7 @@ import PostList from './components/PostList';
 import Pagination from './components/Pagination';
 import queryString from 'query-string';
 import PostFiler from './components/PostFilter';
+import Clock from './components/Clock';
 
 function App() {
   // -------------ColorBox-------------------------
@@ -102,6 +103,7 @@ function App() {
   return (
     <div className="app">
       <h1>LEARCH REACT HOOKS</h1>
+      <Clock />
       <h3>1. TodoForm</h3>
       <h5>Type a name and Enter to Add</h5>
       <TodoForm onSubmit={onTodoFormSubmit}/>
